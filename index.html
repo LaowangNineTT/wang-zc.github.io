@@ -5,10 +5,16 @@
 
 
 
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -52,19 +58,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
 
 
 
@@ -78,8 +84,8 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    version: '6.2.0',
+    scheme: 'Muse',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
@@ -191,9 +197,11 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">Be evil, Don't be evil.</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
@@ -204,7 +212,6 @@
     </button>
   </div>
 </div>
-
 
 
 
@@ -235,6 +242,9 @@
   
 
   
+    
+
+  
 
   
 </nav>
@@ -255,12 +265,167 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-            
-
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://wang-zc.github.io/2018/08/06/SVN-迁移到-Gitlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tierney Wong">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="白大米的笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/06/SVN-迁移到-Gitlab/" itemprop="url">
+                  SVN 迁移到 Gitlab
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-08-06 09:46:27 / Modified: 10:04:26" itemprop="dateCreated datePublished" datetime="2018-08-06T09:46:27+08:00">2018-08-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>自己搭建了 Gitlab 也有一段时间了，看了一下准备把一些项目陆续的迁移到 Gitlab 中。</p>
+<p>之前迁移了一次 CM，但是过程没有记录下来。</p>
+<p>这次记录一下过程</p>
+<p>参考一篇文章<a href="https://blog.csdn.net/Hello_Mr_Cc/article/details/72742503" target="_blank" rel="noopener">CSDN Blog</a></p>
+<p>还有一篇<a href="https://www.lovelucy.info/codebase-from-svn-to-git-migration-keep-commit-history.html" target="_blank" rel="noopener">Blog</a></p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>按照顺序执行，先把 svn 中的 author 导出成 user.txt</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/www/htdocs/xxx » svn <span class="built_in">log</span> ^/ --xml | grep -P <span class="string">"^&lt;author"</span> | sort -u | perl -pe <span class="string">'s/&lt;author&gt;(.*?)&lt;\/author&gt;/$1 = /'</span> &gt; users.txt</span><br><span class="line">usage: grep [-abcDEFGHhIiJLlmnOoqRSsUVvwxZ] [-A num] [-B num] [-C[num]]</span><br><span class="line">    [-e pattern] [-f file] [--binary-files=value] [--color=when]</span><br><span class="line">    [--context[=num]] [--directories=action] [--label] [--line-buffered]</span><br><span class="line">    [--null] [pattern] [file ...]</span><br><span class="line">svn: E000032: Write error: Broken pipe</span><br></pre></td></tr></table></figure>
+<p>但是在执行的时候报错了，提示<code>Write error: Broken pipe</code>，看了网上的一些东西，描述是，在命令的执行中，如果是<code>xxx|xxx</code>这种，上一个命令的输出，给到了下一个命令的输入，如果上一个输出有问题，那么会提示错误信息。</p>
+<p>后来去尝试不断的拆分命令，很快就定位到了 <code>grep -P</code> 这里，grep 是没有 -P 这个选项的。看了下 man page，没找到 P 选项的含义，所以这里去除了 -P 就 OK 了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">svn <span class="built_in">log</span> ^/ --xml | grep <span class="string">"^&lt;author"</span> | sort -u | perl -pe <span class="string">'s/&lt;author&gt;(.*?)&lt;\/author&gt;/$1 = /'</span></span><br></pre></td></tr></table></figure>
+<p>得到的 user.txt 是<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">qingping.xxx=xxx&lt;xxx@xx.cn&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这里把 Gitlab 中的 author 对应填入进去。</p>
+<h3 id="获取-SVN-的数据到本地"><a href="#获取-SVN-的数据到本地" class="headerlink" title="获取 SVN 的数据到本地"></a>获取 SVN 的数据到本地</h3><p>通过 git svn clone 命令把 SVN 仓库导入到 Git 中，</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git svn <span class="built_in">clone</span> svn://xxx.xx@svn.xx.cn:16/openapi/trunk/openapi.xx.xx --no-metadata --authors-file=user.txt /www/htdocs/openapi</span><br></pre></td></tr></table></figure>
+<p>通过以上命令就会在目标文件夹中生成一个 git 项目<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">------------------------------------------------------------</span><br><span class="line">/www/htdocs/openapi(branch:master) » git branch -a</span><br><span class="line">* master</span><br><span class="line">  remotes/git-svn</span><br><span class="line">------------------------------------------------------------</span><br></pre></td></tr></table></figure></p>
+<p>但是这里生成了一个本地的 master 分支，和一个 git-svn 的 remote，我总是看这个 git-svn 不顺眼，如何才能删掉呢？</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/www/htdocs/openapi(branch:master) » git remote rm remotes/git-svn</span><br><span class="line">error: Could not remove config section <span class="string">'remote.remotes/git-svn'</span></span><br></pre></td></tr></table></figure>
+<p>发现这里有些奇怪，这里感觉有些奇怪，但是也没有</p>
+<p>借鉴了博客里面的东西，使用<code>git clone</code>删除了里面原有的 git-svn remote.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -281,7 +446,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -363,19 +528,224 @@
       
         
           
-          索引是什么？索引的解释
-数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询，更新数据库表中数据。
+            <h3 id="索引是什么？"><a href="#索引是什么？" class="headerlink" title="索引是什么？"></a>索引是什么？</h3><h4 id="索引的解释"><a href="#索引的解释" class="headerlink" title="索引的解释"></a>索引的解释</h4><blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/数据库索引" target="_blank" rel="noopener">数据库索引</a>，是数据库管理系统中一个排序的数据结构，以协助快速查询，更新数据库表中数据。</p>
+</blockquote>
+<ul>
+<li><p>值得注意的是：SQL 标准并没有为数据库用户提供任何在数据库系统中控制创建和维护索引的防范，由于索引是冗余的数据结构，因此索引对保证正确性来说并不是必须的；但是索引对事务的高效处理十分重要，对完整性约束的有效实施也很重要；如果没有索引的话，MySQL进行全表扫描会对资源进行极大的浪费.</p>
+</li>
+<li><p><strong>如果不恰当的使用索引的话，只会增加无效的数据维护，耗费资源，同时查询效率仍然得不到提高。</strong></p>
+</li>
+<li><p>那么索引究竟是什么呢？<strong>索引是一种数据结构，一个索引是存储的表中一个特定列或者某几个特定列的值数据结构</strong>，索引是在列上创建的。</p>
+</li>
+</ul>
+<h4 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h4><blockquote>
+<p>有两种基本的索引类型<br><strong>顺序索引</strong>：基于值的顺序排序<br><strong>散列索引</strong>：基于将值平均分布在若干散列桶中，一个值所属的散列通是有一个函数决定的，该函数被称为<em>散列函数</em></p>
+</blockquote>
+<h6 id="顺序索引"><a href="#顺序索引" class="headerlink" title="顺序索引"></a>顺序索引</h6><p>顺序索引中，根据包含记录是否按照搜索码制定的顺序排序可以分为<strong>聚集索引和非聚集索引</strong></p>
+<ul>
+<li>被索引文件中的记录自身也可以按照某种排序顺序存储，一个文件可以有多个索引，分别预计不同的搜索码，如果包含记录的文件按照某个搜索码指定的顺序排序，那么改搜索码对应的索引称为<em>聚集索引</em>，也称为主索引(Primary Index)。</li>
+<li>搜索码指定的顺序于文件中记录的物理顺序不同的索引被称为<strong>非聚集索引</strong>或者<strong>辅助索引</strong>。</li>
+<li>非聚集索引和聚集索引的区别在于，通过聚集索引可以查到需要查找的数据，而通过非聚集索引可以查到记录对应的主键值, 再使用主键的值通过聚集索引查找到需要的数据</li>
+<li>关于数据库中 Key，Primary Key，Unique Key 与 index 的不同可以参见这篇<a href="https://blog.csdn.net/nanamasuda/article/details/52543177" target="_blank" rel="noopener">文章</a></li>
+<li>关于顺序索引，一般如果没有明确表示的话指的就是 B+Tree 索引</li>
+</ul>
+<h6 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h6><ul>
+<li>哈希索引(hash index)基于哈希表实现，只有精确匹配索引所有咧的查询才有效；对于每一行数据，存储引擎都会对所有的索引计算一个哈希码，哈希吗是一个较小的值，并且不同键值计算出来的哈希码也不一样。哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。</li>
+</ul>
+<blockquote>
+<p><em>聚簇索引和非聚簇索引并不是单独的索引类型，而是一种数据存储方式</em> [高性能 MySQL]</p>
+</blockquote>
+<h4 id="索引的优点和缺点"><a href="#索引的优点和缺点" class="headerlink" title="索引的优点和缺点"></a>索引的优点和缺点</h4><h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
+<li>索引大大减少减少了服务器需要扫描的数据量</li>
+<li>索引可以帮助服务器避免排序和临时表</li>
+<li>索引可以将随机 I/O 变为顺序 I/O</li>
+</ul>
+<h6 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h6><blockquote>
+<p>索引的缺点主要是针对不合理索引而言的，对于开发者而言，索引维护所耗费的资源和索引所提供的快速查询能力节省的时间资源两者进行取舍。</p>
+</blockquote>
+<ul>
+<li>创建和维护索引都需要耗费时间，而且随着数据量的增加而增加。</li>
+<li>每个索引还需要耗费额外的物理空间资源。</li>
+<li>当对表中的数据进行 CURD 操作的时候，索引也需要对应的动态维护，增加数据维护成本。</li>
+</ul>
+<h3 id="索引的数据结构"><a href="#索引的数据结构" class="headerlink" title="索引的数据结构"></a>索引的数据结构</h3><blockquote>
+<p>MySQL 存储索引的时候一般我们没有明确之处其余结构就是指的是 B-Tree 数据结构存储索引。<a href="https://blog.csdn.net/linglongwunv/article/details/20066823" target="_blank" rel="noopener">参考资料</a></p>
+</blockquote>
+<blockquote>
+<p>卫星数据：指的是索引元素所指向的数据记录，比如数据库的某一行。</p>
+</blockquote>
+<h4 id="磁盘-I-O"><a href="#磁盘-I-O" class="headerlink" title="磁盘 I/O"></a>磁盘 I/O</h4><ul>
+<li>动态查询树主要有：二叉查找树，平衡二叉查找树，红黑树，B-Tree/B+Tree/B*Tree</li>
+<li>前三者是典型的二叉查找树结构，其查找的时间复杂度O(log2N)与树的深度相关，那么降低树的深度自然对查找效率是有所提高的；还有一个实际问题：就是大规模数据存储中，实现索引查询这样一个实际背景下，树节点存储的元素数量是有限的（如果元素数量非常多的话，查找就退化成节点内部的线性查找了），这样导致二叉查找树结构由于树的深度过大而造成磁盘I/O读写过于频繁，进而导致查询效率低下，那么如何减少树的深度，一个基本的想法就是：采用多叉树结构（由于树节点元素数量是有限的，自然该节点的子树数量也就是有限的）。</li>
+<li>关于硬盘(外存储器)的解读,磁盘获取数据由三部分时间组成:查找时间(代价最高),等待时间,传输时间.</li>
+<li>磁盘读取数据是以盘块(block)为基本单位的。位于同一盘块中的所有数据都能被一次性全部读取出来。而磁盘IO代价主要花费在查找时间Ts上。因此我们应该尽量将相关信息存放在同一盘块，同一磁道中。或者至少放在同一柱面或相邻柱面上，以求在读/写信息时尽量减少磁头来回移动的次数，避免过多的查找时间Ts。</li>
+<li>当我们利用索引查询的时候,显然不可能把整个索引全部加载到内存中,只能逐一加载每一个磁盘页,这里的磁盘页对应这索引树的节点.</li>
+<li>在使用树结构查询的时候如果使用二叉树,那么磁盘的 IO 次数最坏情况下等于索引树的高度.此时索引树的高度就对查询资源至关重要.</li>
+</ul>
+<h4 id="B-Tree-Wiki"><a href="#B-Tree-Wiki" class="headerlink" title="B-Tree Wiki"></a>B-Tree <a href="https://zh.wikipedia.org/wiki/B%E6%A0%91" target="_blank" rel="noopener">Wiki</a></h4><p><strong>什么是 B-Tree？</strong>一个 m 阶的 B 树有以下几个特征。</p>
+<ol>
+<li>根节点至少有两个子节点</li>
+<li>每个中间节点都包含 K-1个元素和 K 个子节点，其中 m/2&lt;=k&lt;=m</li>
+<li>每一个叶子节点都包含 K-1个元素，其中 m/2&lt;=k&lt;=m</li>
+<li>所有的叶子节点都位于同一层</li>
+<li>每个非终端节点中包含有 n 个关键词信息(n，P0，K1，P1，K2….Kn，Pn)<br> a. 其中 n 的取值范围是ceil(m/2)-1&lt;=n&lt;=m-1<br> b. Ki为关键字,且关键字按照顺序排序(K(i-1)&lt;Ki)<br> c. Pi为指向子树根的接点，且指针P(i-1)指向子树种所有结点的关键字均小于Ki，但都大于K(i-1)。[<strong>每个节点中的元素从小到大排列，节点当中 K-1个元素正好是 K 个孩子包含元素的值域划分</strong>]<img src="/2018/05/07/MySQL-索引探索/B-Tree.png">
+</li>
+</ol>
+<blockquote>
+<p>模拟查找文件29的过程：</p>
+</blockquote>
+<blockquote>
+<p> (1) 根据根结点指针找到文件目录的根磁盘块1，将其中的信息导入内存。【磁盘IO操作1次】</p>
+</blockquote>
+<blockquote>
+<p> (2) 此时内存中有两个文件名17，35和三个存储其他磁盘页面地址的数据。根据算法我们发现17&lt;29&lt;35，因此我们找到指针p2。</p>
+</blockquote>
+<blockquote>
+<p>(3) 根据p2指针，我们定位到磁盘块3，并将其中的信息导入内存。【磁盘IO操作2次】</p>
+</blockquote>
+<blockquote>
+<p>(4) 此时内存中有两个文件名26，30和三个存储其他磁盘页面地址的数据。根据算法我们发现26&lt;29&lt;30，因此我们找到指针p2。</p>
+</blockquote>
+<blockquote>
+<p>(5) 根据p2指针，我们定位到磁盘块8，并将其中的信息导入内存。【磁盘IO操作3次】</p>
+</blockquote>
+<blockquote>
+<p>(6) 此时内存中有两个文件名28，29。根据算法我们查找到文件29，并定位了该文件内存的磁盘地址。</p>
+</blockquote>
+<blockquote>
+<p>分析上面的过程，发现需要3次磁盘IO操作和3次内存查找操作。关于内存中的文件名查找，由于是一个有序表结构，可以利用折半查找提高效率。至于3次磁盘IO操作时影响整个B-tree查找效率的决定因素。</p>
+</blockquote>
+<blockquote>
+<p>当然，如果我们使用平衡二叉树的磁盘存储结构来进行查找，磁盘IO操作最少4次，最多5次。而且文件越多，B-tree比平衡二叉树所用的磁盘IO操作次数将越少，效率也越高。</p>
+</blockquote>
+<img src="/2018/05/07/MySQL-索引探索/1525599028356.png">
+<p>B 树中每个节点都具有<strong>卫星数据</strong></p>
+<h6 id="节点的插入"><a href="#节点的插入" class="headerlink" title="节点的插入"></a>节点的插入</h6><blockquote>
+<p>插入（insert）操作：插入一个元素时，首先在B-tree中是否存在，如果不存在，即在叶子结点处结束，然后在叶子结点中插入该新的元素，注意：如果叶子结点空间足够，这里需要向右移动该叶子结点中大于新插入关键字的元素，如果空间满了以致没有足够的空间去添加新的元素，则将该结点进行“分裂”，将一半数量的关键字元素分裂到新的其相邻右结点中，中间关键字元素上移到父结点中（当然，如果父结点空间满了，也同样需要“分裂”操作），而且当结点中关键元素向右移动了，相关的指针也需要向右移。如果在根结点插入新元素，空间满了，则进行分裂操作，这样原来的根结点中的中间关键字元素向上移动到新的根结点中，因此导致树的高度增加一层。</p>
+</blockquote>
+<p>例:自顶向下查找4的节点位置，发现4应当插入到节点元素3，5之间</p>
+<img src="/2018/05/07/MySQL-索引探索/1525597344961.png">
+<p>节点3，5已经是两元素节点，无法再增加。父亲节点 2， 6 也是两元素节点，也无法再增加。根节点9是单元素节点，可以升级为两元素节点。于是拆分节点3，5与节点2，6，让根节点9升级为两元素节点4，9。节点6独立为根节点的第二个孩子</p>
+<img src="/2018/05/07/MySQL-索引探索/1525597368111.png">
+<h6 id="节点的删除操作"><a href="#节点的删除操作" class="headerlink" title="节点的删除操作"></a>节点的删除操作</h6><blockquote>
+<p>删除(delete)操作：首先查找B-tree中需删除的元素,如果该元素在B-tree中存在，则将该元素在其结点中进行删除，如果删除该元素后，首先判断该元素是否有左右孩子结点，如果有，则上移孩子结点中的某相近元素到父节点中，然后是移动之后的情况；如果没有，直接删除后，移动之后的情况.。</p>
+</blockquote>
+<blockquote>
+<p>删除元素，移动相应元素之后，如果某结点中元素数目小于ceil(m/2)-1，则需要看其某相邻兄弟结点是否丰满（结点中元素个数大于ceil(m/2)-1），如果丰满，则向父节点借一个元素来满足条件；如果其相邻兄弟都刚脱贫，即借了之后其结点数目小于ceil(m/2)-1，则该结点与其相邻的某一兄弟结点进行“合并”成一个结点，以此来满足条件。那咱们通过下面实例来详细了解吧。</p>
+</blockquote>
+<p>例:删除11节点</p>
+<img src="/2018/05/07/MySQL-索引探索/1525597390731.png">
+<p>删除11后，节点12只有一个孩子，不符合B树规范。因此找出12,13,15三个节点的中位数13，取代节点12，而节点12自身下移成为第一个孩子。（这个过程称为左旋）</p>
+<img src="/2018/05/07/MySQL-索引探索/1525597423876.png">
+<h4 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+Tree"></a>B+Tree</h4><blockquote>
+<p>B+Tree 是对于 B-Tree 的一种变体，有着比 B-Tree 更高的查询效率。</p>
+</blockquote>
+<p><strong>一个 m 阶的 B 树有着如下特点</strong></p>
+<ol>
+<li>有 K 个子树的中间节点包含有k个元素（B树中是k-1个元素），每个元素不保存数据，只用来索引，所有数据都保存在叶子节点。</li>
+<li>所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</li>
+<li>所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</li>
+</ol>
+<img src="/2018/05/07/MySQL-索引探索/1525598880919.png">
+<p>根节点的最大元素等荣誉整个树的最大元素,叶子节点包含了全量元素信息,并且每一个叶子节点都带有指向下一个节点的指针,形成了一个有序链表.</p>
+<img src="/2018/05/07/MySQL-索引探索/1525598986414.png">
+<p>在 B+Tree 树中,只有叶子节点保存卫星数据.</p>
+<img src="/2018/05/07/MySQL-索引探索/1525599206701.png">
+<p>需要补充的是，在数据库的聚集索引（Clustered Index）中，叶子节点直接包含卫星数据。在非聚集索引（NonClustered Index）中，叶子节点带有指向卫星数据的指针。</p>
+<p>由于 B+Tree 树的中间节点没有卫星数据，所以同样大小的磁盘也(1~4K)可以容纳更多的元素，意味着查询的 IO 次数越少。</p>
+<p>另外，B+Tree 的查询必须最终查询到叶子节点，和 B-Tree 不同，查询性能最稳定，而且在范围查询中，比起只能以来繁琐的中序遍历的 B 树，更有效率。</p>
+<p>综合来看，B+Tree 对比 B-Tree 有三大优势:</p>
+<ol>
+<li>单一节点存储更多的元素，使得查询的IO次数更少。</li>
+<li>所有查询都要查找到叶子节点，查询性能稳定。</li>
+<li>所有叶子节点形成有序链表，便于范围查询。</li>
+</ol>
+<h4 id="哈希索引-1"><a href="#哈希索引-1" class="headerlink" title="哈希索引"></a>哈希索引</h4><blockquote>
+<p>关于哈希索引，目前 MySQL 中只有 Memory 和 NDB 两种引擎支持，详细了解可以参考这篇文章<a href="http://homeway.me/2015/09/13/mysql-hash-index/" target="_blank" rel="noopener">MySQL索引之哈希索引</a>，本文不在赘述。</p>
+</blockquote>
+<h3 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h3><blockquote>
+<p>理解了索引的数据结构之后我们就理解了索引在创建和使用上的一些方法(以下所描述的索引均指的是 B-Tree 索引)。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> People (</span><br><span class="line">    last_name   <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    first_name  <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    dob         <span class="built_in">date</span>            <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    gendar      enum(<span class="string">'m'</span>,<span class="string">'f'</span>)   <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">key</span>(last_name, first_name, dob)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>使用 B-Tree 索引的查询类型适用于下列集中情况</li>
+</ul>
+<ol>
+<li><p>全值匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and first_name = &apos;Cuba&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匹配最左前缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匹配列前缀</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name like &apos;A%&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匹配范围值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name &gt; &apos;Allen&apos; and last_name &lt; &apos;Bob&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>精确匹配某一列并范围匹配另外一列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and last_name like &apos;B%&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只访问索引的查询</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select  last_name, </span><br><span class="line">        first_name, </span><br><span class="line">        dob</span><br><span class="line">from People </span><br><span class="line">where   last_name = &apos;Allen&apos; </span><br><span class="line">    and first_name = &apos;Cuba&apos; </span><br><span class="line">    and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>关于使用索引的一些限制</li>
+</ul>
+<ol>
+<li><p>如果不是按照索引的最左列开始查找，则无法使用索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where first_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>不能跳过索引中的列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果查询中有某个列的范围查询，则其右边的所有咧都无法使用索引优化查询</p>
+<pre><code>select * from People where last_name = &apos;Allen&apos; and first_name like &apos;J%&apos; and dob = &apos;1999-01-01&apos;;
+</code></pre><h5 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h5></li>
+</ol>
+<blockquote>
+<p><a href="https://tech.meituan.com/mysql-index.html" target="_blank" rel="noopener">参考资料</a></p>
+</blockquote>
+<blockquote>
+<ol>
+<li>最左前缀匹配原则，非常重要的原则，mysql会一直向右匹配直到遇到范围查询(&gt;、&lt;、between、like)就停止匹配，比如a = 1 and b = 2 and c &gt; 3 and d = 4 如果建立(a,b,c,d)顺序的索引，d是用不到索引的，如果建立(a,b,d,c)的索引则都可以用到，a,b,d的顺序可以任意调整。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>使用独立的列</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>多列索引：MySQL 从5.0之后的更新版本引入了一种叫<strong>索引合并</strong>的<a href="https://dev.mysql.com/doc/refman/5.6/en/index-merge-optimization.html" target="_blank" rel="noopener">策略</a>，关于这项策略可以参考<a href="http://www.cnblogs.com/digdeep/p/4975977.html" target="_blank" rel="noopener">MySQL 优化之 index merge</a></li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="4">
+<li>=和in可以乱序，比如a = 1 and b = 2 and c = 3 建立(a,b,c)索引可以任意顺序，mysql的查询优化器会帮你优化成索引可以识别的形式</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>尽量选择区分度高的列作为索引,区分度的公式是count(distinct col)/count(*)，表示字段不重复的比例，比例越大我们扫描的记录数越少，唯一键的区分度是1，而一些状态、性别字段可能在大数据面前区分度就是0，那可能有人会问，这个比例有什么经验值吗？使用场景不同，这个值也很难确定，一般需要join的字段我们都要求是0.1以上，即平均1条扫描10条记录</li>
+<li>索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’);</li>
+<li>尽量的扩展索引，不要新建索引。比如表中已经有a的索引，现在要加(a,b)的索引，那么只需要修改原来的索引即可。</li>
+</ol>
+</blockquote>
+<hr>
+<p>一些有价值的参考资料</p>
+<ul>
+<li><a href="http://www.freeoa.net/osuport/db/mysql-index-using-study-note_2827.html" target="_blank" rel="noopener">http://www.freeoa.net/osuport/db/mysql-index-using-study-note_2827.html</a></li>
+<li><a href="https://blog.csdn.net/alexdamiao/article/details/51934917" target="_blank" rel="noopener">https://blog.csdn.net/alexdamiao/article/details/51934917</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23624390" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/23624390</a></li>
+<li><a href="https://www.cnblogs.com/morvenhuang/archive/2009/03/30/1425534.html" target="_blank" rel="noopener">https://www.cnblogs.com/morvenhuang/archive/2009/03/30/1425534.html</a></li>
+<li><a href="http://www.cnblogs.com/digdeep/p/4975977.html" target="_blank" rel="noopener">http://www.cnblogs.com/digdeep/p/4975977.html</a></li>
+<li><a href="https://tech.meituan.com/mysql-index.html" target="_blank" rel="noopener">https://tech.meituan.com/mysql-index.html</a></li>
+</ul>
 
-
-值得注意的是：SQL 标准并没有为数据库用户提供任何在数据库系统中控制创建和维护索引的防范，由于索引是冗余的数据结构，因此索引对保证正确性来说并不是必须的；但是索引对事务的高效处理十分
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/07/MySQL-索引探索/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -431,7 +801,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -509,15 +879,17 @@
       
         
           
-          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/07/hello-world/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+          
         
       
     </div>
@@ -573,7 +945,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -667,29 +1039,22 @@
       
         
           
+            <blockquote>
+<p>自从去北京参加完 Devlink 的 PHP 开发者大会回来一直没有和小伙伴分享得到的收获,这次准备了一个 KeyNote 来讲述</p>
+</blockquote>
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.001.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.002.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.003.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.004.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.005.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.006.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.007.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.008.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.009.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.010.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.011.jpeg">
+<img src="/2017/07/07/High-Availability-PHP-System/高可用的PHP.012.jpeg">
           
-自从去北京参加完 Devlink 的 PHP 开发者大会回来一直没有和小伙伴分享得到的收获,这次准备了一个 KeyNote 来讲述
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/07/High-Availability-PHP-System/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -745,7 +1110,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -839,31 +1204,24 @@
       
         
           
+            <blockquote>
+<p>艺龙的搬砖项目可以说是接受挑战比较大的项目了,做完之后来了一次复盘</p>
+</blockquote>
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.001.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.002.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.003.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.004.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.005.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.006.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.007.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.008.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.009.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.010.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.011.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.012.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.013.jpeg">
+<img src="/2017/04/17/艺龙搬砖项目复盘/艺龙搬砖复盘.014.jpeg">
           
-艺龙的搬砖项目可以说是接受挑战比较大的项目了,做完之后来了一次复盘
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/17/艺龙搬砖项目复盘/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -919,7 +1277,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1013,16 +1371,40 @@
       
         
           
-          今天读完了《华衫讲透孙子兵法》，这本书对我而言读起来还是比较费劲的，一些概念理解起来比较难，其中掺杂着一些注解，在最一开始去理解文言文的意思，经常出错，需要不断的去查古文字典来校对，但是读到后面结合着华杉讲大白话文慢慢的啃下来。读完最大的感触是，哇，这本书，今后十年都值得我反复去读。
-言归正传，这本
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/05/华衫讲孙子兵法读后感/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>今天读完了《华衫讲透孙子兵法》，这本书对我而言读起来还是比较费劲的，一些概念理解起来比较难，其中掺杂着一些注解，在最一开始去理解文言文的意思，经常出错，需要不断的去查古文字典来校对，但是读到后面结合着华杉讲大白话文慢慢的啃下来。读完最大的感触是，哇，这本书，今后十年都值得我反复去读。</p>
+<p>言归正传，这本书一共十三章</p>
+<ul>
+<li>计篇</li>
+<li>作战</li>
+<li>谋攻</li>
+<li>军行</li>
+<li>兵势</li>
+<li>虚实</li>
+<li>军争</li>
+<li>九变</li>
+<li>行军</li>
+<li>地形</li>
+<li>九地</li>
+<li>火攻</li>
+<li>用间<br>如果时间紧的话，可以仔细查阅下第一章《计篇》，孙子兵法最精髓的文字都在这一章了。我个人在读书的时候也是会经常性的翻回第一章，因为后面的很多内容都是对第一章的解读，孙子兵法自春秋战国起至今已经两千七百多年的历史了，被各个朝代君王或将领解读的更是数不胜数，短短几天我肯定不会悟出什么大道理哈哈哈，否则我就是圣人了（虽然我一直很崇拜王阳明…）只有一些切身的体会写出来共享一下，权作纪念吧。</li>
+</ul>
+<blockquote>
+<p>“兵者，国之大事，死生之道，存亡之道，不可不察也”</p>
+</blockquote>
+<p>这句话是计篇的第一句话，也说出了孙子的价值观，孙子兵法研究的不是战之法，其实是不战之法，这一直是我的错误理解，之前一说孙子兵法，总和三十六计联系起来，受到了很多误导，孙子兵法讲的通篇都是讲堂堂正正之道，“五事七计”，道、天、地、将、法，关乎国计民生，生死存亡。又怎么会是明修栈道、暗度陈仓的阴谋诡计呢（笑…</p>
+<p>道为民，为民愿，说个大白话就是广大人民的根本利益，要师出有名，正义不正义这种事情需要这场战争结束了几十年一百年之后才会盖棺定论，所以要想在道上胜出就要靠宣传机器，国家的宣传机器甚至比战争机器还要重要，什么狐狸叫，鱼藏刀都是常用的手段，老百姓信啥，就给他搞啥，这样就能集合众心众力，再套一句大白话（老乡，跟着红军有地分啊）就明白啥意思了。<br>天为军事气象学，阴阳为气势，寒暑为时令。还涉及到了“势”..比较玄..</p>
+<p>地为地形，散、轻、争、交、衢、重、圮、围、死九种地名</p>
+<p>将者，智、信、仁、勇、严也，这一条涉及到了选将任能，一些管理的知识，我没有太理解其中很多的话语是否有更深层次的解读，也和我的本身经历有关，没有过管理的经历～<br>法，也为管理，想想也是，两军交战就是那么一下子刺激，其余绝大多数时间都是在军营中操练士卒，如何制订军法，如何管理部下，都是大学问，要么刘邦问韩信说，我能带多少兵？韩信说：“主公，十万兵，不能更多了”。刘邦问：“你呢？”，韩信说：“多多益善”。管理的学问就在此处。</p>
+<p>在孙子兵法中，有一点是多处体现的 ：“胜兵先胜而后求战，败兵先战而后求胜”，这句话简直是….精彩绝伦！要让自己不可战胜，顺便打一场稳赢的仗，最好能不打，直接招降算了。而且所谓胜利不是指的是消灭敌人就叫胜利了，关键是自己变得强了还是弱了，如果杀敌一千，自损八百，很难说是不是胜利。我也没办法做很多的解读，处于只可意会不能言传的状态…囧</p>
+<p>知己知彼，百战不殆。这句话流传甚广，大家的重点很容易想到知彼上去，这一点在兵法中也有体现，就是最后一章《用间》，但是真正重要的其实是知己啊，“不知彼而知己，一胜一负；不知彼，不知己，每战必败”，知晓自己的优势和劣势，扬长避短，让敌人无法分清你的虚实，调动敌人而不被敌人调动，兵法云：故善战者，致人而不致于人。</p>
+<p>最后说说心，“以治待乱，以静待哗，此治心者也”，这里有很深的感悟，因为最近自己深处的环境不是特别安稳，有一种隐而未发的动荡感，总感觉工作和生活都比较不在节奏上，看到何氏注解的那一段的时候心有悸动。原注如下：</p>
+<blockquote>
+<p>吾之治足以待乱，吾之静足以待哗，前有百万之敌，而吾视之，则如遇小寇。亚夫之遇寇也，坚卧不起；栾箴之临敌也，好以整，又好以暇。夫审此二人，蕴以何术哉？盖其心智之所有素，养之有余也。</p>
+</blockquote>
+<p>海纳百川，有容乃大，壁立千仞，无欲则刚。治自己的心，是一切的根本。</p>
+<p>但是读的时候也有很多地方不理解，甚至不认同，兵法一书，也绝不可能面面具到，把所有的人生大道理都给你讲的透透的，要不然还要那么多文人注解作何用，一本周易永流传了。但是读兵法带给人的感受是读其它书籍全然未有过的，兵法讲的是计，讲的是胸怀天下，登高望远，现在的我们虽然不可能把孙子叫回来让他老人家给你解释一下，但是通过看兵法，稍加体会亦能受益无穷。</p>
+
+          
         
       
     </div>
@@ -1078,7 +1460,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1172,16 +1554,21 @@
       
         
           
-          周六和朋友打羽毛球打得肉疼不已…趁着周天下雨的功夫把《支付战争》读完了，埃里克写的很好，读起来酣畅淋漓，仿佛自己就在世纪初的PayPal公司和他们一起经历这些起起伏伏。创业这个事儿真是不容易。
-1999年，那个时候马云和他的十八罗汉在杭州建立阿里巴巴，在太平洋的另一边有一群疯狂而有充满激情的人开始了
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/20/支付战争/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+            <p>周六和朋友打羽毛球打得肉疼不已…趁着周天下雨的功夫把《支付战争》读完了，埃里克写的很好，读起来酣畅淋漓，仿佛自己就在世纪初的PayPal公司和他们一起经历这些起起伏伏。创业这个事儿真是不容易。</p>
+<p>1999年，那个时候马云和他的十八罗汉在杭州建立阿里巴巴，在太平洋的另一边有一群疯狂而有充满激情的人开始了他们的创业之路，彼得·蒂尔和马克斯·列夫琴一起组建了一家公司立志于解决支付问题，我想大概从那时开始创业公司就有了这种调性，就像埃里克在书中说的那样“混乱的办公室，热情洋溢不知道谁是谁的同事们，这是一群心底的狂人，欢迎来到创业公司”。混乱之中蕴含着无尽的想象力和可能性，这是在CBD的格子间里绝对不会感受到的。就像很多的电影中描绘的那样，这家年轻充满活力的公司走上了漫长的统治世界之路。</p>
+<p>但是在小的公司也会有对手存在，除非你马上小的关门了，几个月后PayPal迎来了他的对手们，dotBank和X.com，似乎大家意识到支付领域的美味，都想进来分一杯羹。在同对手不断的竞争中，PayPal也对自己的业务进行了明确的定位，专注于拍卖领域，想尽一切办法拓展新用户，有用户才有未来嘛。此时的PayPal无疑是整个发展阶段最有吸引力的时候，在这个阶段，紧张刺激的竞争，新行业的急先锋，充满希望的伟大愿景使得大量人才纷涌而至，这些激情洋溢的年轻人成就了日后名震世界的PayPal黑帮…不过创业公司都是最烧钱的公司，尤其是像PayPal这样立足于新兴行业需要教育用户的公司无疑更是烧的厉害，要想走的更远就需要尽快消灭对手，壮大自己，在这种强敌环伺的情况下PayPal要想走下去就不可避免的选择了消灭对手的另外一种方式：合并。PayPal和X.com进行了合并，成功的甩开了其他的竞争对手，成为行业内的领先者。但是每一次合并都是对公司文化的冲击和考验，X.com有着其完全不同的文化氛围（从他们的工程师喜欢用Windows就知道了。。）PayPal在这次合并过程中占据弱势，尤其是在马斯克任职CEO之后，有着“钢铁侠”之称的埃隆·马斯克从来都不是好惹的人，在公司的整合之中，PayPal的品牌危机、产品危机、客服危机不断爆发，支付业务所依赖的巨头eBay也开始反击，2000年的上半年对PayPal来说充满恶意。</p>
+<p>在接下来的业务转型中，PayPal开始艰难的从一个免费的互联网服务变成一个成功的付费服务，产品的艰难转型，用户的谩骂，财政赤字的上涨，诈骗团伙的虎视眈眈令人绝望。马斯克领导下的PayPal不可避免的走向深渊，而长久以来的文化交锋也日益激烈，PayPal诞生后最激烈的罢免就在这样的环境下产生了，马斯克下台，蒂尔重新执掌公司，到这里不禁判断出，对PayPal而言，蒂尔才是他们的精神领袖，而马斯克不是，但是对X.com的人来说又恰好相反，公司文化这种东西真是妙不可言。事实上蒂尔真的给人惊喜，在蒂尔执掌公司之后，PayPal全力削减成本，账户升级高达95%，诈骗损失被遏制住，说是力挽狂澜也丝毫不为过。</p>
+<p>但是PayPal自始至终都有一个强大的对手，PayPal的大多数业务都依赖于拍卖平台eBay，而当eBay开始发力做支付时，来自于垄断者和重量级平台的威胁让人喘不过气来。孙子兵法有句话：昔之善战者，先为不可胜，以待敌之可胜。在这样的情况下，最大化的利用自己的优势，等待eBay自己露出马脚，然后用尽全力主动出击才有一线生机，当面对这样一个对手的时候，怎么重视都不为过。但是面对这样一个对手，结局也很简单，要么创新业务，脱离依赖，要么被平台收购结束持久战。在经历了各种波折的IPO之后，eBay以15亿美元收购PayPal，在新一步的公司整合中，蒂尔离职，PayPal黑帮各自离职创业。如今的PayPal也已经成为支付业的巨头，难以撼动。</p>
+<p>在读这本书的过程中，穿插着很多条线，而我对其中的两条线特别感兴趣，一条是技术发展，一条是公司文化。两条线又相互交缠在一起。技术在PayPal的发展中是至关重要的一环，早期通过工程师在eBay页面上作嵌入标记开展了PayPal在拍卖支付业务，在获取用户的过程中退出的网络买手机器人计划让PayPal在最初的竞争中占据了先发优势。在和X.com的整合过程中，技术冲突是公司文化冲突的主战场，（X.com的工程师喜欢在Windows平台上工作，而马克斯·列夫琴领导的PayPal团队在Unix平台上工作，这不亚于宗教战争啊同志们！！）工程团队的混乱导致公司无法向前推进，因为在互联网创业公司，技术绝对是根基的存在，没有牢固的技术架构，业务模型无法扩大和发展。统一平台，统一管理，是PayPal走下去必须解决的问题，在发展过程中，马克斯着力于使用技术手段遏制诈骗损失，推出了大名鼎鼎的“列夫琴测试”和“伊戈尔”扫描程序，相信如今所有的人都或多或少的使用接触过这项技术。2000年推出的验证码，被沿用至今，一项伟大的发明。作为一名工程人员，最大的幸福也莫过于此吧。。。而在后期的发展中，工程师们总是表现最明显的一员，IPO时八点五十就到公司了。。啧啧真可怕。。 ：）</p>
+<p>读完之后对马克斯·列夫琴充满好奇和敬佩。</p>
+<p>希望成为这样的人</p>
+<p>ps：还有好多好多的支线…天太冷了，不想写了…干脆把提纲贴出哈哈哈</p>
+<p>想想下一本书看啥呢。。。</p>
+<img src="/2016/11/20/支付战争/pic1.jpg">
+<img src="/2016/11/20/支付战争/pic2.jpg">
+<img src="/2016/11/20/支付战争/pic3.jpg">
+
+          
         
       
     </div>
@@ -1237,7 +1624,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1331,19 +1718,65 @@
       
         
           
+            <blockquote>
+<p>这周某个时候和卢大哥讨论起了软件测试的问题，很巧的是我们有一些不同的看法，这个时候大哥给给我递了一本书，年轻人多看书，多看报，少吃零食早睡觉，一脸不信的我接过了书趁着周末这两天窝在北邮的自习室里读完了这本《精益创业实战》，一本好书，值得多读几遍。</p>
+</blockquote>
+<blockquote>
+<p>本书的作者是Ash Maurya，以下简称老A..写作者的话嗯..严肃了……</p>
+</blockquote>
+<p>－－－－－－－－－－－－－－－－－－</p>
+<p>目录是很吸引人的地方，打个比喻，你和一个人相亲，绝大多数情况下，估计会先看看这个人的照片，如果还感兴趣的话听听别人的评价，和读书是一样一样滴，看看目录，读读序言，心里大致对这本书有个模糊的认知，接下来就是带着疑问和思考去读书啦。</p>
+<p>身处一家互联网创业公司，而且还是在中关村这片地儿，早上卖煎饼果子的大爷都能和你掰扯两句商业模式，时间久了总会或多或少的了解到一些创业的知识，然后便肃然起敬。我敬佩创业的人，在我看来创业者们是一群实干家，是一群心底里想做点事儿的人，做的好坏成败暂且搁置，有这份勇气就值得敬佩。</p>
+<p>这本书按照目录走，全书分为四部分</p>
+<p>－ 总章</p>
+<p>－ 把A计划写下来</p>
+<p>－ 找到计划中风险最高的部分</p>
+<p>－ 系统的测试计划</p>
+<p>老A在阐述自己方法的同时拿自己创办的公司 CloudFire 举例，一步一步的向读者展示他对于精益创业方法论的认知和在创业过程中的实践。我个人最感兴趣的章节是在对系统的测试中对于用户的访谈这一片段，针对问题作用户访谈，针对解决方案作用户访谈，针对MVP作用户访谈。读起来真是大开眼界，因为日常工作是研发为主，几乎没有和用户打过交道，所以读起来对这几个章节格外感兴趣，读出了和人沟通的无限可能性哈哈哈哈…但是读这本书的时候令我困惑的地方是“渠道”和“控制风险”，内联和外联，亲力亲为与自动化，在读完全书回过头去试图做出解答的时候也没有得出自己满意的答案，看来还是修炼不够啊，好好修炼去吧。</p>
+<p>把A计划写下来，老A是这么说的，什么是A计划呢，通俗来说大家记得用来嘲笑程序员的一句话嘛“我有一个好点子，就差一个写代码的了”，这里面的“好点子”就指的是A计划，就像是创业者的一次灵光，产品经理失眠整晚碰到清晨的第一缕阳光…嗯，反正就是这种东西，大家体会一下….但是A计划和青春期的小伙子一样靠不住，大多数A计划都迈着无比沉重的步伐走向各自的八宝山..为了留住这些不靠谱的电子，老A给大家想了一个方法：精益画布。这也是贯穿整本书的灵魂所在，整本书就是在不断的完善它，证伪它，完善它。做好你的精益画布，你的A计划也就写下来了。看下图，精益画布长这样…<br><img src="/2016/11/07/精益创业实战/note.png"><br>在接触到精益画布之后我遇到了一个没有认识过的概念“早期接触者”，各位产品经理们不要笑…在下真是第一次接触这块东西，你们想笑的还在后面呢…囧…早期接纳者在我看来应该是被问题困扰最深的那拨人，已经快要忍不住了，啥产品出来以后都抱着死马能当活马医的心态用一用，只要能解决问题，缓解一下都成，让我想起了地方台那些卖药广告的群演老大爷们（我抱着试一试的心态买了这个药，腰也不疼了，腿也不酸了，也能下地干活了…）但是早期接纳者也有一个问题是，TA可能会和你的用户有很大的不一样，这意味着你的产品会遭受到一定程度上的误导?但是先不要想那么远啦，八字还没有一撇呢，精益画布很有效的一点是能落在实处，你的产品创造，你的商业思维，你的营销策略都可以从这一张画布上发散开来，而且以此为基础，你会不断的迭代优化，最起码你心里有底在，我这个东西是干嘛的，卖给谁，咋赚钱，咋发展，咋跑路。。。blabla。。。如果你不会看的话，老A还在书里贴心地介绍了一套产品数据的指标“海盗指标组”。</p>
+<img src="/2016/11/07/精益创业实战/pic.png">
+<p>找出计划中风险最高的部分，说实话我对这部分不是特别明白，有一句我觉得应该是这部分的点睛之笔：构建产品的本质就是控制风险。我只能浅浅的理解一下这句话的意思，并没有领悟到老A想告诉的其它含义😅 。在精益画布的帮助下我尝试去解读这句话的意思，在你的产品模式中，最难的应该是独特卖点这一个地方，你要告诉你的用户，来买我的服务吧，你在别家买不到的。每一个非垄断行业里都想一个热火朝天的大卖场，老板们在台后面不断的叫喊着，来啊～来啊～，看看我啊～，使出浑身解数，这个暖萌，那个高冷…咳咳…向一个喜欢二次元的宅男宣传户外我觉得这就是最大的风险，在确认风险的时候首先你要证伪，这一点着实让我大吃一惊，证伪这一点确实是之前没有考虑过的事情，如果跳过这一步的话就是努力的向着死胡同奔跑，所以毫无疑问这一点非常重要，那么如何证伪呢？在控制风险这一章里，定性验证，定量核实是老A提出的方法，关于这一点我理解的奥义在于小步快跑，不断纠正方向，在你的产品服务没有大卖特卖之前，市场不知道你的存在，这个时候如果你想知道市场的反馈那就抓住一切可以学习的机会快速学习，先做个小Demo拿着先上，找几个用户聊一聊，尽快修正，这样的话无论是正面反馈还是负面反馈都会让你做出快速的响应，否则死都不知道怎么死的。。。</p>
+<p>老A花了大量的篇幅来讲系统的测试计划这一章，而这一章也着实重要，系统的测试指的是用高效的方法和最小的成本来获取反馈，从反馈中提取精华，快速迭代。这也是我最感兴趣的一点，在和用户的沟通中，提取出他们真正的需求，福特先生有过一句很出名的话：如果你问用户要什么，他们会说要一匹更快的马。从这句话中不难看出，如果提炼用户需求，搞清楚用户的世界是一个很考验人能力的工作。面对用户之前，一定一定要做到一点，了解自己的问题。连自己都没搞定，怎么去搞定用户呢，其次哈哈哈哈，最好玩的地方是在和用户交流的过程中，探索用户的价值观…要命啦，这一点我觉得有点玄学的特点，但是也并不难，因为人们会很愿意和陌生人吐露自己的真实想法，和熟人反而更难。了解用户存在的问题，不要引导用户的回答，一步一步的引诱着他吐露自己纯洁或者猥琐的内心世界… </p>
+<p>在做用户访谈的时候（ 尤其是早期确定早期接纳者的阶段 ）放弃那些没什么共鸣的人群，同时还有一点值得警惕的是放弃那些不遵守商业规则和契约的人，这些人给你带来的负面影响远远大于正面影响，放弃那些屌丝老板们。针对问题作用户访谈的时候注意用户对问题的描述和你对问题的理解是否存在偏差，存在于什么地方，为什么会存在这样的偏差，不断的拷问自己找到最终的问题所在。在针对解决方案作用户访谈的时候展示自己的解决方案，诱导用户产生兴趣，（ 问题是由两方面引起的，一是痛苦，二是欲望。老A说的太精辟了.. ）在和用户的交流中关注用户的反应，这在价格验证的时候是一个很重要的依据。</p>
+<p>在成功的造出了1.0版本之后就进入了不断的学习环节，通过市场反应不断调节产品，使得产品和市场的匹配程度越来越高，同时给创业者更严峻的考验是活下去，前段时间有句话很冷，但是又很火那就是“Winter is coming.”那么这段时间大家都是穿上了秋衣秋裤挤一挤艰难过冬，在没有暖气还有雾霾的日子里，创业者们要努力的让自己的公司活下去，活到下一个春天来临，大浪淘沙啊。。。</p>
+<p>读完这本书之后我发现了几处我常犯的错误，虽然我不是创业者，只是程序猿（ 你看，我就犯了一个错误 ）。。。</p>
+<ul>
+<li><p>过早的优化，在日常工作中，经常不断的优化代码，心心念念的想着优化业务逻辑，君不见Teambition里的todo list还有一长串呢。一定不要提早优化，在上线初期过早的优化代码和下雨前擦车一样傻。</p>
+</li>
+<li><p>是注意资源的浪费，在开发的某些时候会碰到一些奇奇怪怪的问题，比如网络问题，比如一些硬件玄学问题。。但是有时候执拗起来又拽着问题不放，不经意间就造成了对人力成本的极大浪费。这样非常不好。</p>
+</li>
+<li><p>是理想化追求，想文中开头提到的自动化测试和单元测试，因为之前开发过程中并没有做到单元测试，而且也并非是TDD开发，所以在开发过程中我并没有参与到测试这一环中，都是由专门负责测试任务的同事进行测试工作。但是在接触到的很多文章和讲座里多提到了开发参与测试的重要性，我仍然对这一点持有疑惑，但是在正确的时间做正确的事情，这一点我深信不疑。</p>
+</li>
+</ul>
+<p>关于这本书还有好多问题没有得出结论，大多都是和用户，和产品相关的问题，看来需要补一补这方面知识了。。。</p>
+<blockquote>
+<p>期待下一次在读这本书会有新收获。</p>
+</blockquote>
+<p>本书后来做了一次 KeyNote 和办公室的小伙伴分享</p>
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.001.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.002.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.003.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.004.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.005.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.006.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.007.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.008.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.009.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.010.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.011.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.012.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.013.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.014.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.015.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.016.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.017.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.018.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.019.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.020.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.021.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.022.jpeg">
+<img src="/2016/11/07/精益创业实战/读书笔记－精益创业实战.023.jpeg">
           
-这周某个时候和卢大哥讨论起了软件测试的问题，很巧的是我们有一些不同的看法，这个时候大哥给给我递了一本书，年轻人多看书，多看报，少吃零食早睡觉，一脸不信的我接过了书趁着周末这两天窝在北邮的自习室里读完了这本《精益创业实战》，一本好书，值得多读几遍。
-
-
-本书的作者是Ash Maurya，以下简称老A
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/11/07/精益创业实战/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1399,7 +1832,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tierney Wong">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="Be evil, Don't be evil.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1493,18 +1926,34 @@
       
         
           
-          
-每个人都是孤独的，都生活在独立的世界中，孤独的出生，孤独的死亡。纵然哪些欢声笑语的人也有一个孤单的心灵，因为地球本就是孤独的，远处只有二向箔在默默地注视着你.
+            <blockquote>
+<p>每个人都是孤独的，都生活在独立的世界中，孤独的出生，孤独的死亡。纵然哪些欢声笑语的人也有一个孤单的心灵，因为地球本就是孤独的，远处只有二向箔在默默地注视着你.</p>
+</blockquote>
+<p>前一段时间正好赶上李松蔚老师讲心理学的Live，我就屁颠屁颠的买了一期，听完很多收获，下面主要是整理了一下李松蔚老师的过程，其中混杂着自己的感触，算是一篇Live笔记了，下面整理了李老师讲述的几个要点供参考…</p>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p>授权是互动过程的一部分。互动是双方或者多方的关系，老话说的是一个巴掌拍不响就是这个理儿。互动一定是一个相互依存的关系，不能割裂。<br>说到互动，这里有有一个很基础的观点，授权。互动和授权的关系很像是数理逻辑的充分必要条件这种依赖关系，又有点像是Venn图的数学关系（这方面见仁见智了…）。<br>举个例子，当一个女生讲，“我被这个渣男毁掉了一生”。看起来是在这个女生和渣男的交往过程中，渣男参与进来毁掉了女生的一生。但是这里浮现出了“授权”的概念，这里的逻辑是这样的，在交往过程中，这个女生授权这个渣男毁掉了她的一生，她选择相信这个渣男毁掉了你的一生…<br>在人际交往中，只要一个人做的事情或者一些事物对你产生了影响，这里面一定有你的授权。比如说当你打开这个微信，看这篇文章，就是你在授权它影响你。是因为你的授权，你的所作所为，所以这篇文章才会对你产生影响。<br>互动在授权的基础上可以拆分成下面着两个进程</p>
+<ol>
+<li>他做了一些事情</li>
+<li>你授权他的行为对你产生影响<br>互动需要对方的授权，是一个相互配合的事情。<br>现在社会上有一些相对狭隘的想法，就忽略了这一点，在互动的过程一方感觉自己的话是有魔力的，可以带动另一方的情绪，自己的某种话语魔力（活着人格魅力或者什么肢体动作乱七八糟的鸟东西），导致对方受到了某种影响，这种魔力有好多个名字，掌控感，领导力，leadership诸如此类，但是这样会陷入一个很尴尬的地位，完全忽略了另一方的配合，忽略了和你沟通的对象的存在了，我们把授权的概念拉到这个场景下解释一下其实是由于对方配合你，才让你认为自己产生某种魔力。才让你产生这种虚妄的感觉。（可以想象两个极端场景［1］大哥给小弟讲心灵鸡汤［2］阿谀奉承 ）<br> 在互动中有两条规则是存在的，这两条规则李松蔚老师称之为元规则。</li>
+</ol>
+<ul>
+<li>你在人际互动中可以做任何事 （没有束缚，没有规则）</li>
+<li>你不能控制这件事的结果（无法预测）<br>  举一个最当下的例子：我可以在这篇文章里写任何东西，美好的，肮脏的，哲学的，数理的等等等等任何事情，包括犯法的，乱伦的事情，都是可以的。法律和道德是社会后来加的基本规则，我们在互动中可以做任何事情。但是我无法控制我做完之后产生的后果，触犯了法律，违背了社会公德，会遭受到国家机器的惩罚，世俗人民的谴责（谩骂）或者写了一篇好文章第二天发现自己成为名人了?…被读者骂等等等等。<br>当我发现我写了一篇文章被读者骂的很惨，心里觉得十分气愤，这个时候套用授权的概念是我授权让别人的文字对我产生了影响。所有的互动中肯定会有授权的存在，你的所做所为都是因为你授权这件事情，这个人，这些事物影响到了你。</li>
+</ul>
+<h3 id="不可知论"><a href="#不可知论" class="headerlink" title="不可知论"></a>不可知论</h3><p>我们只能感知自己的情绪。任何除你之外的其他人，其他事都是不可知的，我们唯一能确定的有且仅有我们自己的感受。当别人的情绪对你产生影响的时候本质上来讲其实是一个不可知的事物给你带来了你自己可以确定的对你的影响。<br>举个例子：某一天因为公司业绩达到了目标，CEO在公司内部发表了激情洋溢的演说，但是现场的人员反馈没有CEO预想的热烈，零星点点几片掌声（没办法，研发就是这个鸟样子。。。囧。。），然后呢CEO觉得不太开心。这个月没奖金发了！<br><strong>拆分一下</strong></p>
+<ol>
+<li>这个例子里面CEO的讲话对员工产生的影响是无法预测的（你永远都不知道别人在想什么）</li>
+<li>员工表现不是特别积极，CEO在心里会根据这些反馈得出一个消极的结论（@warn:这里是CEO授权让这些反馈影响到了他自己）从而产生了一个挫败的感觉，CEO不知道员工是不是喜欢他的演讲，但是CEO心里猜想员工可能不喜欢他的演讲，从而产生了挫败的情绪</li>
+<li>员工的感觉是不可知的，但是CEO的挫败情绪是我们确定一定以及肯定可知的！<br><strong>拆分结束</strong><br>我们顺利的从不可知回到了可知，归结起来尝试这样去理解：别人的想法和状态是不可知的，不可信的，那是别人的事情，但是在这些别人的情绪反馈里我们产生了自己的可能性推论，虽然我们无法验证这种可能性，但是我们授权这种可能性对我们自己产生影响。</li>
+</ol>
+<h3 id="课题分离"><a href="#课题分离" class="headerlink" title="课题分离"></a>课题分离</h3><p>我们只能处理自己的情绪。在一段人际关系中，基于上面的不可知论，我们永远无法知道别人的感受，永远只能处理自己的感受课题，因为只有我们自己的感受是我们真正能感受到的，真正能把握的。<br>举个例子，我做了一件事情让别人不舒服了，那我是否需要处理别人的不舒服? 不需要。因为你不知道他是不是真的不舒服，就算他明白的告诉你你让他不舒服了，也只是你选择相信了你的选择而已（见第一节）。别人的情绪让别人去处理，你无法处理，你能处理的只是你自己的情绪，你自己的可知感受。<br>那这样的话是不是™就可以不负责任了呢？不是的，处理自己的感受，别人的感受让别人处理，这是一条元规则，参考组成世界的普朗克常数，我让别人不舒服了并不会直接推导出我要去处理别人的不舒服，这里跳过了一环，你让别人不舒服了，你自己感觉很内疚，你去处理别人的不舒服其实是在解决你的内疚，不是处理别人的不舒服，在重申一遍，别人的情绪只能让别人去处理。<br>做一道习题，一个女生说，我妈妈不喜欢我染头发，我不染了。这里的逻辑有问题吗？<br>Of course，这个女生说我妈妈不喜欢我染头发，我不染了，但是中间欠缺了一环就是这个女生自己的感受，她妈妈不喜欢她染头发，对她产生了某种影戏那个，她感到害怕之类的情绪，因为她的这些情绪，所以她选择了不染头发。我们做出一些决定并不是因为别人的原因，而是因为要抚平我们自己的情绪，课题分离的原则体现在我们只能处理我们自己的情绪，即使我们是因为别人的某种反应做出了一些调整，但是这个调整的原因实际上是我们对于别人的某种反应得出来的某种反应或者某种映像作出的调整。</p>
+<h3 id="一个完整的人际反射"><a href="#一个完整的人际反射" class="headerlink" title="一个完整的人际反射"></a>一个完整的人际反射</h3><ul>
+<li>对方做了什么</li>
+<li>对方做的事情对我来说意味着什么</li>
+<li>我做什么，来应对我的情绪<br>当两个人的反射拼接到一起就形成了一个循环的互动链条，这里可以参考下计算机科学里面的TCP握手协议.</li>
+</ul>
+<p>感兴趣的可以点击查看原文看下李松蔚老师的<a href="https://mp.weixin.qq.com/s?__biz=MzA4NTI3NTkyNQ==&amp;mid=2654002622&amp;idx=1&amp;sn=bfc18f40b042628b63a986622746066c&amp;scene=4&amp;uin=MjkzODM0MzEwMQ%3D%3D&amp;key=7b81aac53bd2393d55de75a46b6ec27932fe634f88d1b794ce2bfe102c634e7d1e55939fc884a1031a0091a8f8a872bb" target="_blank" rel="noopener">文章</a></p>
 
-前一段时间正好赶上李松蔚老师讲心理学的Live，我就屁颠屁颠的买了一期，听完很多收获，下面主要是整理了一下李松蔚老师的过程，其中混杂着自
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/09/02/人际互动的秘密/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
         
       
     </div>
@@ -1584,7 +2033,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1669,7 +2118,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.2.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
@@ -1750,38 +2199,25 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
-
-
 
   
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
 
 
   
-
-
-
-	
-
-
 
 
 
