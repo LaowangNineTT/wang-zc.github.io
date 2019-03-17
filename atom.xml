@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wang-zc.github.io/"/>
-  <updated>2019-01-02T01:27:25.868Z</updated>
+  <updated>2019-03-17T10:22:23.051Z</updated>
   <id>https://wang-zc.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>太久没有学习了</title>
+    <link href="https://wang-zc.github.io/2019/03/17/%E5%A4%AA%E4%B9%85%E6%B2%A1%E6%9C%89%E5%AD%A6%E4%B9%A0%E4%BA%86/"/>
+    <id>https://wang-zc.github.io/2019/03/17/太久没有学习了/</id>
+    <published>2019-03-17T10:21:15.000Z</published>
+    <updated>2019-03-17T10:22:23.051Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>太久没有学习了</p></blockquote><p>今天打开Leetcode，发现自己刷题的手都生疏了</p><p>重新刷起来</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;太久没有学习了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;今天打开Leetcode，发现自己刷题的手都生疏了&lt;/p&gt;
+&lt;p&gt;重新刷起来&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>How to Write Go Code</title>
