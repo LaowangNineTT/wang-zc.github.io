@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wang-zc.github.io/"/>
-  <updated>2019-04-21T13:34:01.322Z</updated>
+  <updated>2019-11-02T03:49:51.179Z</updated>
   <id>https://wang-zc.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ThinkPHP3.2 -&gt; Laravel 5.8.29 + Vue</title>
+    <link href="https://wang-zc.github.io/2019/11/02/ThinkPHP3-2-Laravel-5-8-29-Vue/"/>
+    <id>https://wang-zc.github.io/2019/11/02/ThinkPHP3-2-Laravel-5-8-29-Vue/</id>
+    <published>2019-11-02T03:42:57.000Z</published>
+    <updated>2019-11-02T03:49:51.179Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>前情提要</p><p>公司从 2014 年的时候进行了项目重构，从原生的 PHP 框架迁移到了 ThinkPHP 3.2 版本，但是经过时间的发展，我们的框架一直没有迭代更新，而且其中的代码质量参差不齐，2018 年我把代码仓库从 SVN 迁移到 GitLab CE 之后，开始对框架进行集中式的推进，终于在今年我们决定，把云掌柜的技术体系换成 Laravel + Vue 的前后分离方式，使用 Yapi 作为接口管理工具，同时也面临着PHP 5.4 -&gt; PHP 7.2 的迁移。</p></blockquote><p><strong>Laravel 的 6.0 LTS 版本就在迁移的过程中刚出来，后续打算从 5.8 升上来，先等扩展到位把，很多第三方的包还没有适配，像Carbon 这种兼容有问题但是影响巨大的包依赖存在问题，先不动了。</strong></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;前情提要&lt;/p&gt;
+&lt;p&gt;公司从 2014 年的时候进行了项目重构，从原生的 PHP 框架迁移到了 ThinkPHP 3.2 版本，但是经过时间的发展，我们的框架一直没有迭代更新，而且其中的代码质量参差不齐，2018 年我把代码仓库从 SVN 迁移到
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>From Apprentice To Artisan</title>
