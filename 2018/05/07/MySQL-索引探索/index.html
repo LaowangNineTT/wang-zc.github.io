@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="zh-Hans"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> MySQL 索引探索 · 白大米的笔记</title><meta name="description" content="MySQL 索引探索 - Tierney Wong"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://wang-zc.github.io/atom.xml" title="白大米的笔记"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">目录</a></li><li class="nav-list-item"><a href="https://github.com/wang-zc" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="mailto:qdwangzc@gmail.come" target="_self" class="nav-list-link">E-MAIL</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">MySQL 索引探索</h1><div class="post-info">May 7, 2018</div><div class="post-content"><blockquote>
+<!DOCTYPE html><html lang="zh-Hans"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> MySQL 索引探索 · 白大米的笔记</title><meta name="description" content="MySQL 索引探索 - Tierney Wong"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="https://wang-zc.github.io/atom.xml" title="白大米的笔记"><meta name="generator" content="Hexo 4.0.0"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">MySQL 索引探索</h1><div class="post-info">May 7, 2018</div><div class="post-content"><blockquote>
 <p>关于索引，你想知道的事情</p>
 </blockquote>
 <a id="more"></a>
+
 <h3 id="索引是什么？"><a href="#索引是什么？" class="headerlink" title="索引是什么？"></a>索引是什么？</h3><h4 id="索引的解释"><a href="#索引的解释" class="headerlink" title="索引的解释"></a>索引的解释</h4><blockquote>
 <p><a href="https://zh.wikipedia.org/wiki/数据库索引" target="_blank" rel="noopener">数据库索引</a>，是数据库管理系统中一个排序的数据结构，以协助快速查询，更新数据库表中数据。</p>
 </blockquote>
@@ -63,7 +64,8 @@
 <li>每个中间节点都包含 K-1个元素和 K 个子节点，其中 m/2&lt;=k&lt;=m</li>
 <li>每一个叶子节点都包含 K-1个元素，其中 m/2&lt;=k&lt;=m</li>
 <li>所有的叶子节点都位于同一层</li>
-<li>每个非终端节点中包含有 n 个关键词信息(n，P0，K1，P1，K2….Kn，Pn)<br> a. 其中 n 的取值范围是ceil(m/2)-1&lt;=n&lt;=m-1<br> b. Ki为关键字,且关键字按照顺序排序(K(i-1)&lt;Ki)<br> c. Pi为指向子树根的接点，且指针P(i-1)指向子树种所有结点的关键字均小于Ki，但都大于K(i-1)。[<strong>每个节点中的元素从小到大排列，节点当中 K-1个元素正好是 K 个孩子包含元素的值域划分</strong>]<img src="/2018/05/07/MySQL-索引探索/B-Tree.png">
+<li>每个非终端节点中包含有 n 个关键词信息(n，P0，K1，P1，K2….Kn，Pn)<br> a. 其中 n 的取值范围是ceil(m/2)-1&lt;=n&lt;=m-1<br> b. Ki为关键字,且关键字按照顺序排序(K(i-1)&lt;Ki)<br> c. Pi为指向子树根的接点，且指针P(i-1)指向子树种所有结点的关键字均小于Ki，但都大于K(i-1)。[<strong>每个节点中的元素从小到大排列，节点当中 K-1个元素正好是 K 个孩子包含元素的值域划分</strong>]<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/B-Tree.png" class="">
+
 </li>
 </ol>
 <blockquote>
@@ -93,15 +95,17 @@
 <blockquote>
 <p>当然，如果我们使用平衡二叉树的磁盘存储结构来进行查找，磁盘IO操作最少4次，最多5次。而且文件越多，B-tree比平衡二叉树所用的磁盘IO操作次数将越少，效率也越高。</p>
 </blockquote>
-<img src="/2018/05/07/MySQL-索引探索/1525599028356.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525599028356.png" class="">
 <p>B 树中每个节点都具有<strong>卫星数据</strong></p>
 <h6 id="节点的插入"><a href="#节点的插入" class="headerlink" title="节点的插入"></a>节点的插入</h6><blockquote>
 <p>插入（insert）操作：插入一个元素时，首先在B-tree中是否存在，如果不存在，即在叶子结点处结束，然后在叶子结点中插入该新的元素，注意：如果叶子结点空间足够，这里需要向右移动该叶子结点中大于新插入关键字的元素，如果空间满了以致没有足够的空间去添加新的元素，则将该结点进行“分裂”，将一半数量的关键字元素分裂到新的其相邻右结点中，中间关键字元素上移到父结点中（当然，如果父结点空间满了，也同样需要“分裂”操作），而且当结点中关键元素向右移动了，相关的指针也需要向右移。如果在根结点插入新元素，空间满了，则进行分裂操作，这样原来的根结点中的中间关键字元素向上移动到新的根结点中，因此导致树的高度增加一层。</p>
 </blockquote>
 <p>例:自顶向下查找4的节点位置，发现4应当插入到节点元素3，5之间</p>
-<img src="/2018/05/07/MySQL-索引探索/1525597344961.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525597344961.png" class="">
+
 <p>节点3，5已经是两元素节点，无法再增加。父亲节点 2， 6 也是两元素节点，也无法再增加。根节点9是单元素节点，可以升级为两元素节点。于是拆分节点3，5与节点2，6，让根节点9升级为两元素节点4，9。节点6独立为根节点的第二个孩子</p>
-<img src="/2018/05/07/MySQL-索引探索/1525597368111.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525597368111.png" class="">
+
 <h6 id="节点的删除操作"><a href="#节点的删除操作" class="headerlink" title="节点的删除操作"></a>节点的删除操作</h6><blockquote>
 <p>删除(delete)操作：首先查找B-tree中需删除的元素,如果该元素在B-tree中存在，则将该元素在其结点中进行删除，如果删除该元素后，首先判断该元素是否有左右孩子结点，如果有，则上移孩子结点中的某相近元素到父节点中，然后是移动之后的情况；如果没有，直接删除后，移动之后的情况.。</p>
 </blockquote>
@@ -109,9 +113,11 @@
 <p>删除元素，移动相应元素之后，如果某结点中元素数目小于ceil(m/2)-1，则需要看其某相邻兄弟结点是否丰满（结点中元素个数大于ceil(m/2)-1），如果丰满，则向父节点借一个元素来满足条件；如果其相邻兄弟都刚脱贫，即借了之后其结点数目小于ceil(m/2)-1，则该结点与其相邻的某一兄弟结点进行“合并”成一个结点，以此来满足条件。那咱们通过下面实例来详细了解吧。</p>
 </blockquote>
 <p>例:删除11节点</p>
-<img src="/2018/05/07/MySQL-索引探索/1525597390731.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525597390731.png" class="">
+
 <p>删除11后，节点12只有一个孩子，不符合B树规范。因此找出12,13,15三个节点的中位数13，取代节点12，而节点12自身下移成为第一个孩子。（这个过程称为左旋）</p>
-<img src="/2018/05/07/MySQL-索引探索/1525597423876.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525597423876.png" class="">
+
 <h4 id="B-Tree"><a href="#B-Tree" class="headerlink" title="B+Tree"></a>B+Tree</h4><blockquote>
 <p>B+Tree 是对于 B-Tree 的一种变体，有着比 B-Tree 更高的查询效率。</p>
 </blockquote>
@@ -121,11 +127,14 @@
 <li>所有的叶子结点中包含了全部元素的信息，及指向含这些元素记录的指针，且叶子结点本身依关键字的大小自小而大顺序链接。</li>
 <li>所有的中间节点元素都同时存在于子节点，在子节点元素中是最大（或最小）元素。</li>
 </ol>
-<img src="/2018/05/07/MySQL-索引探索/1525598880919.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525598880919.png" class="">
+
 <p>根节点的最大元素等荣誉整个树的最大元素,叶子节点包含了全量元素信息,并且每一个叶子节点都带有指向下一个节点的指针,形成了一个有序链表.</p>
-<img src="/2018/05/07/MySQL-索引探索/1525598986414.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525598986414.png" class="">
+
 <p>在 B+Tree 树中,只有叶子节点保存卫星数据.</p>
-<img src="/2018/05/07/MySQL-索引探索/1525599206701.png">
+<img src="/2018/05/07/MySQL-%E7%B4%A2%E5%BC%95%E6%8E%A2%E7%B4%A2/1525599206701.png" class="">
+
 <p>需要补充的是，在数据库的聚集索引（Clustered Index）中，叶子节点直接包含卫星数据。在非聚集索引（NonClustered Index）中，叶子节点带有指向卫星数据的指针。</p>
 <p>由于 B+Tree 树的中间节点没有卫星数据，所以同样大小的磁盘也(1~4K)可以容纳更多的元素，意味着查询的 IO 次数越少。</p>
 <p>另外，B+Tree 的查询必须最终查询到叶子节点，和 B-Tree 不同，查询性能最稳定，而且在范围查询中，比起只能以来繁琐的中序遍历的 B 树，更有效率。</p>
@@ -139,44 +148,27 @@
 <p>关于哈希索引，目前 MySQL 中只有 Memory 和 NDB 两种引擎支持，详细了解可以参考这篇文章<a href="http://homeway.me/2015/09/13/mysql-hash-index/" target="_blank" rel="noopener">MySQL索引之哈希索引</a>，本文不在赘述。</p>
 </blockquote>
 <h3 id="索引的使用"><a href="#索引的使用" class="headerlink" title="索引的使用"></a>索引的使用</h3><blockquote>
-<p>理解了索引的数据结构之后我们就理解了索引在创建和使用上的一些方法(以下所描述的索引均指的是 B-Tree 索引)。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> People (</span><br><span class="line">    last_name   <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    first_name  <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    dob         <span class="built_in">date</span>            <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    gendar      enum(<span class="string">'m'</span>,<span class="string">'f'</span>)   <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">key</span>(last_name, first_name, dob)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<p>理解了索引的数据结构之后我们就理解了索引在创建和使用上的一些方法(以下所描述的索引均指的是 B-Tree 索引)。</p>
 </blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> People (</span><br><span class="line">    last_name   <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    first_name  <span class="built_in">varchar</span>(<span class="number">50</span>)     <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    dob         <span class="built_in">date</span>            <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    gendar      enum(<span class="string">'m'</span>,<span class="string">'f'</span>)   <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">key</span>(last_name, first_name, dob)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>使用 B-Tree 索引的查询类型适用于下列集中情况</li>
 </ul>
 <ol>
-<li><p>全值匹配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and first_name = &apos;Cuba&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匹配最左前缀</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匹配列前缀</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name like &apos;A%&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>匹配范围值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name &gt; &apos;Allen&apos; and last_name &lt; &apos;Bob&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>精确匹配某一列并范围匹配另外一列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and last_name like &apos;B%&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>只访问索引的查询</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select  last_name, </span><br><span class="line">        first_name, </span><br><span class="line">        dob</span><br><span class="line">from People </span><br><span class="line">where   last_name = &apos;Allen&apos; </span><br><span class="line">    and first_name = &apos;Cuba&apos; </span><br><span class="line">    and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
-</li>
+<li>全值匹配<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and first_name = &apos;Cuba&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>匹配最左前缀<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>匹配列前缀<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name like &apos;A%&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>匹配范围值<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name &gt; &apos;Allen&apos; and last_name &lt; &apos;Bob&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>精确匹配某一列并范围匹配另外一列<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and last_name like &apos;B%&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>只访问索引的查询<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select  last_name, </span><br><span class="line">        first_name, </span><br><span class="line">        dob</span><br><span class="line">from People </span><br><span class="line">where   last_name = &apos;Allen&apos; </span><br><span class="line">    and first_name = &apos;Cuba&apos; </span><br><span class="line">    and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <ul>
 <li>关于使用索引的一些限制</li>
 </ul>
 <ol>
-<li><p>如果不是按照索引的最左列开始查找，则无法使用索引</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where first_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>不能跳过索引中的列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果查询中有某个列的范围查询，则其右边的所有咧都无法使用索引优化查询</p>
-<pre><code>select * from People where last_name = &apos;Allen&apos; and first_name like &apos;J%&apos; and dob = &apos;1999-01-01&apos;;
-</code></pre><h5 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h5></li>
+<li>如果不是按照索引的最左列开始查找，则无法使用索引<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where first_name = &apos;Allen&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>不能跳过索引中的列<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from People where last_name = &apos;Allen&apos; and dob = &apos;1999-01-01&apos;;</span><br></pre></td></tr></table></figure></li>
+<li>如果查询中有某个列的范围查询，则其右边的所有咧都无法使用索引优化查询<pre><code>select * from People where last_name = &apos;Allen&apos; and first_name like &apos;J%&apos; and dob = &apos;1999-01-01&apos;;</code></pre><h5 id="高性能的索引策略"><a href="#高性能的索引策略" class="headerlink" title="高性能的索引策略"></a>高性能的索引策略</h5></li>
 </ol>
 <blockquote>
 <p><a href="https://tech.meituan.com/mysql-index.html" target="_blank" rel="noopener">参考资料</a></p>
@@ -218,4 +210,4 @@
 <li><a href="http://www.cnblogs.com/digdeep/p/4975977.html" target="_blank" rel="noopener">http://www.cnblogs.com/digdeep/p/4975977.html</a></li>
 <li><a href="https://tech.meituan.com/mysql-index.html" target="_blank" rel="noopener">https://tech.meituan.com/mysql-index.html</a></li>
 </ul>
-</div></article></div></main><footer><div class="paginator"><a href="/2018/08/06/SVN-迁移到-Gitlab/" class="prev">PREV</a><a href="/2018/05/07/hello-world/" class="next">NEXT</a></div><div class="copyright"><p>© 2014 - 2019 <a href="https://wang-zc.github.io">Tierney Wong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+</div></article></div></main><footer><div class="paginator"><a href="/2018/08/06/SVN-%E8%BF%81%E7%A7%BB%E5%88%B0-Gitlab/" class="prev">PREV</a><a href="/2018/05/07/hello-world/" class="next">NEXT</a></div><div class="copyright"><p>© 2015 - 2020 <a href="https://wang-zc.github.io">Tierney Wong</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
